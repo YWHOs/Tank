@@ -1,0 +1,27 @@
+[
+	{
+		"file": "D:\\Unreal Projects\\Tank\\Source\\Tank\\BasePawn.cpp",
+		"command": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe\" @\"D:\\Unreal Projects\\Tank\\.vscode\\compileCommands_Default\\Tank.211.rsp\"",
+		"directory": "D:\\Epic Games\\UE_5.0\\Engine\\Source"
+	},
+	{
+		"file": "D:\\Unreal Projects\\Tank\\Source\\Tank\\BasePawn.h",
+		"command": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe\" @\"D:\\Unreal Projects\\Tank\\.vscode\\compileCommands_Default\\Tank.211.rsp\"",
+		"directory": "D:\\Epic Games\\UE_5.0\\Engine\\Source"
+	},
+	{
+		"file": "D:\\Unreal Projects\\Tank\\Source\\Tank\\Tank.Build.cs",
+		"command": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe\" @\"D:\\Unreal Projects\\Tank\\.vscode\\compileCommands_Default\\Tank.211.rsp\"",
+		"directory": "D:\\Epic Games\\UE_5.0\\Engine\\Source"
+	},
+	{
+		"file": "D:\\Unreal Projects\\Tank\\Source\\Tank\\Tank.cpp",
+		"command": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe\" @\"D:\\Unreal Projects\\Tank\\.vscode\\compileCommands_Default\\Tank.211.rsp\"",
+		"directory": "D:\\Epic Games\\UE_5.0\\Engine\\Source"
+	},
+	{
+		"file": "D:\\Unreal Projects\\Tank\\Source\\Tank\\Tank.h",
+		"command": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe\" @\"D:\\Unreal Projects\\Tank\\.vscode\\compileCommands_Default\\Tank.211.rsp\"",
+		"directory": "D:\\Epic Games\\UE_5.0\\Engine\\Source"
+	}
+]
