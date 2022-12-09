@@ -12,6 +12,7 @@ ABasePawn::ABasePawn()
 	PrimaryActorTick.bCanEverTick = true;
 
 	capsuleComponent = CreateDefaultSubobject<UCapsuleComponent>(TEXT("Collider"));
+	RootComponent = capsuleComponent;
 
 	baseMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Base"));
 	baseMesh -> SetupAttachment(capsuleComponent);
@@ -34,13 +35,6 @@ void ABasePawn::BeginPlay()
 void ABasePawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
-}
-
-// Called to bind functionality to input
-void ABasePawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
 }
 
