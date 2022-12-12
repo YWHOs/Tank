@@ -34,4 +34,7 @@ private:
 	int32 visibleAnywhereInt = 12;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Variables", meta = (AllowPrivateAccess = "true"))
 	int32 editAnywhereInt = 22;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Combat")
+	TSubclassOf<class AProjectile> projectileClass;
 };
