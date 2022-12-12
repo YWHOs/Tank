@@ -21,6 +21,7 @@ void APawnTank::SetupPlayerInputComponent(UInputComponent* _playerInputComponent
 
     _playerInputComponent -> BindAxis(TEXT("Moveforward"), this, &APawnTank::Move);
     _playerInputComponent -> BindAxis(TEXT("Turn"), this, &APawnTank::Turn);
+    _playerInputComponent -> BindAction(TEXT("Fire"), IE_Pressed, this, &APawnTank::Fire);
 }
 void APawnTank::Tick(float _deltaTime)
 {
