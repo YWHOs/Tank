@@ -22,6 +22,26 @@ void APawnTank::SetupPlayerInputComponent(UInputComponent* _playerInputComponent
     _playerInputComponent -> BindAxis(TEXT("Moveforward"), this, &APawnTank::Move);
     _playerInputComponent -> BindAxis(TEXT("Turn"), this, &APawnTank::Turn);
 }
+void APawnTank::Tick(float _deltaTime)
+{
+    Super::Tick(_deltaTime);
+
+    if(playerControllerRef)
+    {
+        FHitResult hitResult;
+        playerControllerRef -> GetHitResultUnderCursor(
+            ECollisionChannel::ECC_Visibility, false, hitResult);
+        DrawDebugSphere(GetWorld(), hitResult.ImpactPoint, 25.f, 12, FColor::Red, false, -1.f);
+        RotateTurret(hitResult.ImpactPoint);
+    }
+}
+void APawnTank::BeginPlay()
+{
+    Super::BeginPlay();
+
+    playerControllerRef = Cast<APlayerController>(GetController());
+
+}
 
 void APawnTank::Move(float _value)
 {
