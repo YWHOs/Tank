@@ -23,6 +23,12 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = "Comba")
 	UStaticMeshComponent* projectileMesh;
 
+	UPROPERTY(VisibleAnywhere, Category = "Movement")
+	class UProjectileMovementComponent* projectileMovement;
+
+	UFUNCTION()
+	void OnHit(UPrimitiveComponent* _hitComp, AActor* _otherActor, UPrimitiveComponent* _otherComp, FVector _normalImpulse, const FHitResult& _hit);
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
