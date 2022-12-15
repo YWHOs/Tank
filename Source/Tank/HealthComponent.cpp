@@ -24,7 +24,6 @@ void UHealthComponent::BeginPlay()
 	GetOwner() -> OnTakeAnyDamage.AddDynamic(this, &UHealthComponent::Damage);
 }
 
-
 // Called every frame
 void UHealthComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
@@ -35,6 +34,9 @@ void UHealthComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActo
 
 void UHealthComponent::Damage(AActor* _damageActor, float _damage, const UDamageType* _damageType, class AController* _instigator, AActor* _damageCauser)
 {
+	if (_damage <= 0.f) return;
 
+	health -= _damage;
+	UE_LOG(LogTemp, Display, TEXT("Your %f"), health);
 }
 
