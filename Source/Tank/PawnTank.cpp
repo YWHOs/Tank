@@ -27,10 +27,10 @@ void APawnTank::Tick(float _deltaTime)
 {
     Super::Tick(_deltaTime);
 
-    if(playerControllerRef)
+    if(tankPlayerController)
     {
         FHitResult hitResult;
-        playerControllerRef -> GetHitResultUnderCursor(
+        tankPlayerController -> GetHitResultUnderCursor(
             ECollisionChannel::ECC_Visibility, false, hitResult);
         DrawDebugSphere(GetWorld(), hitResult.ImpactPoint, 25.f, 12, FColor::Red, false, -1.f);
         RotateTurret(hitResult.ImpactPoint);
@@ -40,7 +40,10 @@ void APawnTank::BeginPlay()
 {
     Super::BeginPlay();
 
-    playerControllerRef = Cast<APlayerController>(GetController());
+    tankPlayerController = Cast<APlayerController>(GetController());
+
+    FVector tankLocation = this -> GetActorLocation();
+    this -> SetActorLocation(FVector(tankLocation.X, tankLocation.Y, 105.f));
 
 }
 
@@ -56,4 +59,11 @@ void APawnTank::Turn(float _value)
     FRotator deltaRotation = FRotator::ZeroRotator;
     deltaRotation.Yaw = _value * turnSpeed * UGameplayStatics::GetWorldDeltaSeconds(this);
     AddActorLocalRotation(deltaRotation, true);
+}
+
+void APawnTank::HandleDestruction()
+{
+    Super::HandleDestruction();
+    SetActorHiddenInGame(true);
+    SetActorTickEnabled(false);
 }

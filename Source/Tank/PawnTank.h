@@ -21,6 +21,10 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	virtual void Tick(float DeltaTime) override;
+
+	void HandleDestruction();\
+
+	APlayerController* GetTankPlayerController() const { return tankPlayerController; }
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -38,5 +42,5 @@ private:
 	void Move(float _value);
 	void Turn(float _value);
 
-	APlayerController* playerControllerRef;
+	APlayerController* tankPlayerController;
 };

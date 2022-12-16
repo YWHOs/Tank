@@ -17,6 +17,8 @@ class TANK_API ATower : public ABasePawn
 public:
 	virtual void Tick(float _deltaTime) override;
 
+	void HandleDestruction();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
