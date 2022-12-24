@@ -17,10 +17,18 @@ class TANK_API ATankGameMode : public AGameModeBase
 public:
 	void ActorDied(AActor* _deadActor);
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void StartGame();
+
 protected:
 	virtual void BeginPlay() override;
 
 private:
 	class APawnTank* tank;
+	class ATankPlayerController* tankPlayerController;
+
+	float startDelay = 3.f;
+
+	void GameStart();
 	
 };
