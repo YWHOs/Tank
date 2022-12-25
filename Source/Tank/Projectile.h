@@ -20,7 +20,7 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
-	UPROPERTY(EditDefaultsOnly, Category = "Comba")
+	UPROPERTY(EditDefaultsOnly, Category = "Combat")
 	UStaticMeshComponent* projectileMesh;
 
 	UPROPERTY(VisibleAnywhere, Category = "Movement")
@@ -31,6 +31,9 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	float damage = 50.f;
+
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	class UParticleSystem* hitParticle;
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

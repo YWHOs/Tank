@@ -16,10 +16,16 @@ void ATankGameMode::ActorDied(AActor* _deadActor)
         {
             tankPlayerController -> SetPlayerEnabledState(false);
         }
+        GameOver(false);
     }
     else if (ATower* destroyedTower = Cast<ATower>(_deadActor))
     {
         destroyedTower -> HandleDestruction();
+        --targetTowers;
+        if(targetTowers == 0)
+        {
+            GameOver(true);
+        }
     }
 }
 
@@ -32,6 +38,7 @@ void ATankGameMode::BeginPlay()
 
 void ATankGameMode::GameStart()
 {
+    targetTowers = GetTargetTower();
     tank = Cast<APawnTank>(UGameplayStatics::GetPlayerPawn(this, 0));
     tankPlayerController = Cast<ATankPlayerController>(UGameplayStatics::GetPlayerController(this, 0));
 
@@ -47,4 +54,11 @@ void ATankGameMode::GameStart()
 
         GetWorldTimerManager().SetTimer(playerEnableTime, inputDelegate, startDelay, false);
     }
+}
+
+int32 ATankGameMode::GetTargetTower()
+{
+    TArray<AActor*> towers;
+    UGameplayStatics::GetAllActorsOfClass(this, ATower::StaticClass(), towers);
+    return towers.Num();
 }
