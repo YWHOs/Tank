@@ -39,7 +39,7 @@ void ABasePawn::Fire()
 	FVector projectileLocation = projectileSpawnPoint -> GetComponentLocation();
 	FRotator projectileRotation = projectileSpawnPoint -> GetComponentRotation();
 
-	auto projectile = GetWorld() -> SpawnActor<AProjectile>(projectileClass, projectileLocation, projectileRotation);
+	AProjectile* projectile = GetWorld() -> SpawnActor<AProjectile>(projectileClass, projectileLocation, projectileRotation);
 	projectile -> SetOwner(this);
 }
 
@@ -48,6 +48,14 @@ void ABasePawn::HandleDestruction()
 	if(deathParticle)
 	{
 		UGameplayStatics::SpawnEmitterAtLocation(this, deathParticle, GetActorLocation(), GetActorRotation());
+	}
+	if(deathSound)
+	{
+		UGameplayStatics::PlaySoundAtLocation(this, deathSound, GetActorLocation());
+	}
+	if(deathCameraShakeClass)
+	{
+		GetWorld() -> GetFirstPlayerController() -> ClientStartCameraShake(deathCameraShakeClass);
 	}
 
 }

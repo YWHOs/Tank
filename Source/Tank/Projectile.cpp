@@ -30,6 +30,12 @@ void AProjectile::BeginPlay()
 
 	projectileMesh -> OnComponentHit.AddDynamic(this, &AProjectile::OnHit);
 
+	if(launchSound)
+	{
+		UGameplayStatics::PlaySoundAtLocation(this, launchSound, GetActorLocation());
+	}
+
+
 }
 
 // Called every frame
@@ -41,15 +47,15 @@ void AProjectile::Tick(float DeltaTime)
 
 void AProjectile::OnHit(UPrimitiveComponent* _hitComp, AActor* _otherActor, UPrimitiveComponent* _otherComp, FVector _normalImpulse, const FHitResult& _hit)
 {
-	auto myOwner = GetOwner();
+	AActor* myOwner = GetOwner();
 	if(myOwner == nullptr)
 	{
 		Destroy();
 		return;
 	}
 
-	auto myOwnerInstigator = myOwner -> GetInstigatorController();
-	auto damageTypeClass = UDamageType::StaticClass();
+	AController* myOwnerInstigator = myOwner -> GetInstigatorController();
+	UClass* damageTypeClass = UDamageType::StaticClass();
 
 	if(_otherActor && _otherActor != this && _otherActor != myOwner)
 	{
@@ -58,7 +64,14 @@ void AProjectile::OnHit(UPrimitiveComponent* _hitComp, AActor* _otherActor, UPri
 		{
 			UGameplayStatics::SpawnEmitterAtLocation(this, hitParticle, GetActorLocation(), GetActorRotation());
 		}
-
+		if(hitSound)
+		{
+			UGameplayStatics::PlaySoundAtLocation(this, hitSound, GetActorLocation());
+		}
+		if(hitCameraShakeClass)
+		{
+			GetWorld() -> GetFirstPlayerController() -> ClientStartCameraShake(hitCameraShakeClass);
+		}
 	}
 	Destroy();
 }

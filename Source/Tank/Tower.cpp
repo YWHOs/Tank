@@ -28,7 +28,11 @@ void ATower::BeginPlay()
 
 void ATower::CheckFire()
 {
-    if (InFireRange())
+    if(tank == nullptr)
+    {
+        return;
+    }
+    if (InFireRange() && tank -> isAlive)
     {
         Fire();
     }

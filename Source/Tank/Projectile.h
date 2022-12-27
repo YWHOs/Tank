@@ -6,6 +6,8 @@
 #include "GameFramework/Actor.h"
 #include "Projectile.generated.h"
 
+class USoundBase;
+
 UCLASS()
 class TANK_API AProjectile : public AActor
 {
@@ -37,6 +39,14 @@ private:
 
 	UPROPERTY(VisibleAnywhere, Category = "Combat")
 	class UParticleSystemComponent* trailParticle;
+
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	USoundBase* launchSound;
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	USoundBase* hitSound;
+
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<class UCameraShakeBase> hitCameraShakeClass;
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
